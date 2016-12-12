@@ -9,6 +9,12 @@ module.exports = Mn.View.extend({
     'click .js-editItem': 'edit',
   },
 
+  onRender: function() {
+  	this.model.on('change', function() {
+        console.log('foo');
+    });
+  },
+
   isEditing: false,
 
   edit: function () {
@@ -22,10 +28,14 @@ module.exports = Mn.View.extend({
   		_.map(this.$('input'), function (el, i) {
   			el.setAttribute('disabled', true);
   		});
-		this.isEditing = false;
-		this.$('.js-editItem').text('Edit');
+  		this.isEditing = false;
+  		this.$('.js-editItem').text('Edit');
+  		SaveItem.call(this);
   	}
 
+  	function SaveItem() {
+  		console.log(123);
+  	}
   },
 
 });

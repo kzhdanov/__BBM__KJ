@@ -16962,7 +16962,13 @@
 	var { Model } = __webpack_require__(4);
 
 	module.exports = Model.extend({
-	  defaults: {}
+	  defaults: {
+	    firstname: ''
+	  },
+
+	  foo: function () {
+	    console.log(1);
+	  }
 	});
 
 /***/ },
@@ -16980,6 +16986,12 @@
 	    'click .js-editItem': 'edit'
 	  },
 
+	  onRender: function () {
+	    this.model.on('change', function () {
+	      console.log('foo');
+	    });
+	  },
+
 	  isEditing: false,
 
 	  edit: function () {
@@ -16995,6 +17007,11 @@
 	      });
 	      this.isEditing = false;
 	      this.$('.js-editItem').text('Edit');
+	      SaveItem.call(this);
+	    }
+
+	    function SaveItem() {
+	      console.log(123);
 	    }
 	  }
 
