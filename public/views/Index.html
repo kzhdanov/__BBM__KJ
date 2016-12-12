@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <style>
+        #_root {
+            width: 1280px;
+            margin: 0;
+            padding: 15px;
+        }
+        td { display: block; }
+    </style>
+  </head>
+  <body>
+    <table id="_root">
+   
+    </table>
+
+    <script type='x-template/underscore' id='item'>
+      <input value="<%= firstname %>" disabled id="fn" placeholder="Name"></input>
+      <input value="<%= surname %>" disabled id="sn" placeholder="Surname"></input>
+      <input value="<%= age %>" disabled id="age" placeholder="Age"></input>
+      <input value="<%= comments %>" disabled id="comments" placeholder="comment"></input>
+      <button class='js-editItem'>Edit</button>
+    </script>
+    <script src="./js/build/main.js"></script>
+  </body>
+</html>
