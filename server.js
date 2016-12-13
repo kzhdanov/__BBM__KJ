@@ -27,12 +27,27 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/public/views/index.html');
 });
 
-app.get('/get', function (req, res) {
+app.get('/users', function (req, res) {
     customers.get(function (err, data) {
       if (!err)
         res.send(JSON.stringify(data));
     });
-})
+});
+
+app.delete('/users/:id', function (req, res) {
+  res.send('DELETE request to homepage');
+});
+
+app.put('/users/:id', function (req, res) {
+   var obj = req.body;
+   
+   customers.save(obj, function (err, val) {
+      if(!err)
+        res.send(val);
+      else
+        res.send(err);
+   });
+});
 
 app.listen(8081, function () {
   console.log('Server successfully started on 8081 port');

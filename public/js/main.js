@@ -9,9 +9,13 @@ var coll = new AppCollection();
     coll.fetch();
 
 const MyCollectionView = Mn.CollectionView.extend({
-  tagName: 'tr',
+  tagName: 'tbody',
   childView: userView,
-  collection: coll
+  collection: coll,
+
+  onChildviewDeleteItem(childView) {
+    console.log('item selected: ' + childView.model.cid);
+  }
 });
 
 const collectionView = new MyCollectionView();

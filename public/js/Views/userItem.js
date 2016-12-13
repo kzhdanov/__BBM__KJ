@@ -2,17 +2,21 @@ var Mn = require('backbone.marionette');
 var _ = require("underscore");
 
 module.exports = Mn.View.extend({
-  tagName: 'td',
+  tagName: 'tr',
   template: '#item',
 
   events: {
     'click .js-editItem': 'edit',
+    'click .js-delete': 'delete',
+    'change #fn': 'fnChanged',
+  },
+
+  triggers: {
+    'click .js-delete': 'delete:item',
   },
 
   onRender: function() {
-  	this.model.on('change', function() {
-        console.log('foo');
-    });
+
   },
 
   isEditing: false,
@@ -30,12 +34,15 @@ module.exports = Mn.View.extend({
   		});
   		this.isEditing = false;
   		this.$('.js-editItem').text('Edit');
-  		SaveItem.call(this);
-  	}
-
-  	function SaveItem() {
-  		console.log(123);
+  		this.model.save();
   	}
   },
 
+  delete: function () {
+    this.model.destroy();
+  },
+
+  fnChanged: function (e) {
+    this.model.set('firstname', e.target.value); 
+  }
 });

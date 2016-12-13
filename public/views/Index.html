@@ -6,11 +6,10 @@
 
     <style>
         #_root {
-            width: 1280px;
+            width: 780px;
             margin: 0;
             padding: 15px;
         }
-        td { display: block; }
     </style>
   </head>
   <body>
@@ -19,11 +18,22 @@
     </table>
 
     <script type='x-template/underscore' id='item'>
-      <input value="<%= firstname %>" disabled id="fn" placeholder="Name"></input>
-      <input value="<%= surname %>" disabled id="sn" placeholder="Surname"></input>
-      <input value="<%= age %>" disabled id="age" placeholder="Age"></input>
-      <input value="<%= comments %>" disabled id="comments" placeholder="comment"></input>
-      <button class='js-editItem'>Edit</button>
+      <td>
+        <input value="<%= firstname %>" disabled id="fn" placeholder="Name"></input>
+      </td>
+      <td>
+        <input value="<%= surname %>" disabled id="sn" placeholder="Surname"></input>
+      </td>
+      <td>
+        <input value="<%= age %>" disabled id="age" placeholder="Age"></input>
+      </td>
+      <td>
+        <input value="<%= comments %>" disabled id="comments" placeholder="comment"></input>
+      </td>
+      <td>
+        <button class='js-editItem'>Edit</button>
+        <button class='js-delete'>Delete</button>
+      </td>
     </script>
     <script src="./js/build/main.js"></script>
   </body>
